@@ -5,17 +5,19 @@ public class Module {
     private String name;
     private String id;
     private ArrayList<Student> students;
-    private ArrayList<Course> associatedCourses;
+    private ArrayList<Course> courses;
 
     public Module(String name, String id){
         this.name = name;
         this.id = id;
+        this.courses = new ArrayList<Course>();
+        this.students = new ArrayList<Student>();
     }
 
     //TODO mutators for courses and enrolled students
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -23,7 +25,7 @@ public class Module {
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(String id) {
@@ -31,31 +33,31 @@ public class Module {
     }
 
     public ArrayList<Course> getCourses() {
-        return associatedCourses;
+        return this.courses;
     }
 
     public ArrayList<Student> getStudents() {
-        return students;
+        return this.students;
     }
 
     public void addStudent(Student s){
-        if(! s.getModules().contains(this)){
-            s.addModule(this);
-        }
         if(this.students.contains(s)){
             return;
         }
         this.students.add(s);
+        if(! s.getModules().contains(this)){
+            s.addModule(this);
+        }
     }
 
     public void addCourse(Course c){
-        if(! c.getModules().contains(this)){
-            c.addModule(this);
-        }
-        if(this.associatedCourses.contains(c)){
+        if(this.courses.contains(c)){
             return;
         }
-        this.associatedCourses.add(c);
+        this.courses.add(c);
+        if(!c.getModules().contains(this)){
+            c.addModule(this);
+        }
     }
 
     @Override
@@ -64,7 +66,7 @@ public class Module {
                 "name='" + name + '\'' +
                 ", id='" + id + '\'' +
                 ", students=" + students +
-                ", associatedCourses=" + associatedCourses +
+                ", associatedCourses=" + courses +
                 '}';
     }
 }

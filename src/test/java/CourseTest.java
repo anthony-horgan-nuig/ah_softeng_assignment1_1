@@ -60,9 +60,6 @@ public class CourseTest {
 
         Module module1 = new Module("Geometry", "MA510");
         Module module2 = new Module("Programming 1", "CT110");
-        System.out.println(course);
-        System.out.println(module1);
-        System.out.println(module1.getCourses());
         course.addModule(module1);
         module2.addCourse(course);
         ArrayList<Module> expectedModules = new ArrayList<Module>();

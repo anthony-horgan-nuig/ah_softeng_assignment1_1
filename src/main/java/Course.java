@@ -6,7 +6,7 @@ public class Course {
 
     private String name;
     private ArrayList<Module> modules;
-    private ArrayList<Student> enrolledStudents;
+    private ArrayList<Student> students;
     private LocalDate startDate;
     private LocalDate endDate;
 
@@ -18,6 +18,8 @@ public class Course {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.modules = new ArrayList<Module>();
+        this.students = new ArrayList<Student>();
     }
 
     //TODO mutators for modules and enrolled students
@@ -31,7 +33,7 @@ public class Course {
     }
 
     public LocalDate getStartDate() {
-        return startDate;
+        return this.startDate;
     }
 
     public void setStartDate(LocalDate startDate) {
@@ -39,7 +41,7 @@ public class Course {
     }
 
     public LocalDate getEndDate() {
-        return endDate;
+        return this.endDate;
     }
 
     public void setEndDate(LocalDate endDate) {
@@ -47,32 +49,32 @@ public class Course {
     }
 
     public ArrayList<Student> getStudents() {
-        return enrolledStudents;
+        return this.students;
     }
 
     public ArrayList<Module> getModules() {
-        return modules;
+        return this.modules;
     }
 
     // TODO add course to student
     public void addStudent(Student s){
+        if(this.students.contains(s)){
+            return;
+        }
+        this.students.add(s);
         if(! s.getCourses().contains(this)){
             s.addCourse(this);
         }
-        if(this.enrolledStudents.contains(s)){
-            return;
-        }
-        this.enrolledStudents.add(s);
     }
 
     public void addModule(Module m){
-        if(! m.getCourses().contains(this)){
-            m.addCourse(this);
-        }
         if(this.modules.contains(m)){
             return;
         }
         this.modules.add(m);
+        if(! m.getCourses().contains(this)){
+            m.addCourse(this);
+        }
     }
 
     @Override
@@ -80,7 +82,7 @@ public class Course {
         return "Course{" +
                 "name='" + name + '\'' +
                 ", modules=" + modules +
-                ", enrolledStudents=" + enrolledStudents +
+                ", students=" + students+
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';

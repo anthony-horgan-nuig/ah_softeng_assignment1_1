@@ -16,6 +16,8 @@ public class Student {
         this.age = age;
         this.dob = dob;
         this.id = id;
+        this.courses = new ArrayList<Course>();
+        this.modules = new ArrayList<Module>();
     }
 
     public String getUsername(){
@@ -24,7 +26,7 @@ public class Student {
 
     // basic getters and setters
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(int age) {
@@ -32,7 +34,7 @@ public class Student {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -40,7 +42,7 @@ public class Student {
     }
 
     public LocalDate getDob() {
-        return dob;
+        return this.dob;
     }
 
     public void setDob(LocalDate dob) {
@@ -48,7 +50,7 @@ public class Student {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -56,31 +58,31 @@ public class Student {
     }
 
     public ArrayList<Course> getCourses() {
-        return courses;
+        return this.courses;
     }
 
     public ArrayList<Module> getModules() {
-        return modules;
+        return this.modules;
     }
 
     public void addCourse(Course c){
-        if(! c.getStudents().contains(this)){
-            c.addStudent(this);
-        }
         if(this.courses.contains(c)){
             return;
         }
         this.courses.add(c);
+        if(! c.getStudents().contains(this)){
+            c.addStudent(this);
+        }
     }
 
     public void addModule(Module m){
-        if(! m.getStudents().contains(this)){
-            m.addStudent(this);
-        }
         if(this.modules.contains(m)){
             return;
         }
         this.modules.add(m);
+        if(! m.getStudents().contains(this)){
+            m.addStudent(this);
+        }
     }
 
 
