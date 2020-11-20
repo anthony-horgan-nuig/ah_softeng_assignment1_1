@@ -30,7 +30,7 @@ public class Module {
         this.id = id;
     }
 
-    public ArrayList<Course> getAssociatedCourses() {
+    public ArrayList<Course> getCourses() {
         return associatedCourses;
     }
 
@@ -38,11 +38,24 @@ public class Module {
         return students;
     }
 
-    public void enrollStudent(Student s){
+    public void addStudent(Student s){
+        if(! s.getModules().contains(this)){
+            s.addModule(this);
+        }
         if(this.students.contains(s)){
             return;
         }
         this.students.add(s);
+    }
+
+    public void addCourse(Course c){
+        if(! c.getModules().contains(this)){
+            c.addModule(this);
+        }
+        if(this.associatedCourses.contains(c)){
+            return;
+        }
+        this.associatedCourses.add(c);
     }
 
     @Override

@@ -63,6 +63,27 @@ public class Student {
         return modules;
     }
 
+    public void addCourse(Course c){
+        if(! c.getStudents().contains(this)){
+            c.addStudent(this);
+        }
+        if(this.courses.contains(c)){
+            return;
+        }
+        this.courses.add(c);
+    }
+
+    public void addModule(Module m){
+        if(! m.getStudents().contains(this)){
+            m.addStudent(this);
+        }
+        if(this.modules.contains(m)){
+            return;
+        }
+        this.modules.add(m);
+    }
+
+
     @Override
     public String toString() {
         return "Student{" +

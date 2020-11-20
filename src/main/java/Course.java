@@ -46,7 +46,7 @@ public class Course {
         this.endDate = endDate;
     }
 
-    public ArrayList<Student> getEnrolledStudents() {
+    public ArrayList<Student> getStudents() {
         return enrolledStudents;
     }
 
@@ -55,14 +55,20 @@ public class Course {
     }
 
     // TODO add course to student
-    public void enrollStudent(Student s){
+    public void addStudent(Student s){
+        if(! s.getCourses().contains(this)){
+            s.addCourse(this);
+        }
         if(this.enrolledStudents.contains(s)){
             return;
         }
         this.enrolledStudents.add(s);
     }
 
-    public void attachModule(Module m){
+    public void addModule(Module m){
+        if(! m.getCourses().contains(this)){
+            m.addCourse(this);
+        }
         if(this.modules.contains(m)){
             return;
         }
