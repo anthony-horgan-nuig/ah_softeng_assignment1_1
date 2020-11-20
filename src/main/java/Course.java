@@ -18,8 +18,8 @@ public class Course {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.modules = new ArrayList<Module>();
-        this.students = new ArrayList<Student>();
+        this.modules = new ArrayList<>();
+        this.students = new ArrayList<>();
     }
 
     public String getName() {
@@ -54,7 +54,6 @@ public class Course {
         return this.modules;
     }
 
-    // TODO add course to student
     public void addStudent(Student s){
         if(this.students.contains(s)){
             return;
