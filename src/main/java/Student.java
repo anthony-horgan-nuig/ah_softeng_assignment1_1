@@ -18,6 +18,10 @@ public class Student {
         this.id = id;
     }
 
+    public String getUsername(){
+        return this.name + this.age;
+    }
+
     // basic getters and setters
     public int getAge() {
         return age;
@@ -66,6 +70,7 @@ public class Student {
                 ", age=" + age +
                 ", dob=" + dob +
                 ", id=" + id +
+                ", username=" + this.getUsername() +
                 ", courses=" + courses +
                 ", modules=" + modules +
                 '}';
