@@ -22,8 +22,6 @@ public class Course {
         this.students = new ArrayList<Student>();
     }
 
-    //TODO mutators for modules and enrolled students
-
     public String getName() {
         return name;
     }

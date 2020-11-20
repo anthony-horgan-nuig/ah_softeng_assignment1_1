@@ -5,11 +5,9 @@ public class Student {
     private String name;
     private int age;
     private LocalDate dob;
-    // TODO maybe change id to string
     private int id;
     private ArrayList<Course> courses;
     private ArrayList<Module> modules;
-    // TODO see about adding username attribute
 
     public Student(String name, int age, LocalDate dob, int id){
         this.name = name;
