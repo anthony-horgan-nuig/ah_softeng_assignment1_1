@@ -54,6 +54,21 @@ public class Course {
         return modules;
     }
 
+    // TODO add course to student
+    public void enrollStudent(Student s){
+        if(this.enrolledStudents.contains(s)){
+            return;
+        }
+        this.enrolledStudents.add(s);
+    }
+
+    public void attachModule(Module m){
+        if(this.modules.contains(m)){
+            return;
+        }
+        this.modules.add(m);
+    }
+
     @Override
     public String toString() {
         return "Course{" +

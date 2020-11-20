@@ -38,6 +38,12 @@ public class Module {
         return students;
     }
 
+    public void enrollStudent(Student s){
+        if(this.students.contains(s)){
+            return;
+        }
+        this.students.add(s);
+    }
 
     @Override
     public String toString() {
