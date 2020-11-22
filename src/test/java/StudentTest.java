@@ -13,7 +13,7 @@ public class StudentTest {
         LocalDate dob = new LocalDate(1998, 4, 1);
         int id = 18773425;
         Student s = new Student(name, age, dob, id);
-        assertEquals(name + age, s.getUsername());
+        assertEquals(name + " " + age, s.getUsername());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class StudentTest {
         Course course2 = new Course("GY11", new LocalDate(2020, 1, 9), new LocalDate(2026, 1, 5));
         s.addCourse(course1);
         course2.addStudent(s);
-        ArrayList<Course> expectedCourses = new ArrayList<Course>();
+        ArrayList<Course> expectedCourses = new ArrayList<>();
         expectedCourses.add(course1);
         expectedCourses.add(course2);
         assertEquals(expectedCourses, s.getCourses());
@@ -84,7 +84,7 @@ public class StudentTest {
         Module module2 = new Module("Programming 1", "CT110");
         s.addModule(module1);
         module2.addStudent(s);
-        ArrayList<Module> expectedModules = new ArrayList<Module>();
+        ArrayList<Module> expectedModules = new ArrayList<>();
         expectedModules.add(module1);
         expectedModules.add(module2);
         assertEquals(expectedModules, s.getModules());

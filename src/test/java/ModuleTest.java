@@ -32,7 +32,7 @@ public class ModuleTest {
         Course course2 = new Course("GY11", new LocalDate(2020, 1, 9), new LocalDate(2026, 1, 5));
         module.addCourse(course1);
         course2.addModule(module);
-        ArrayList<Course> expectedCourses = new ArrayList<Course>();
+        ArrayList<Course> expectedCourses = new ArrayList<>();
         expectedCourses.add(course1);
         expectedCourses.add(course2);
         assertEquals(expectedCourses, module.getCourses());
@@ -48,7 +48,7 @@ public class ModuleTest {
         Student student2 = new Student("james", 21, new LocalDate(1993, 3, 12), 1234567);
         module.addStudent(student1);
         student2.addModule(module);
-        ArrayList<Student> expectedStudents = new ArrayList<Student>();
+        ArrayList<Student> expectedStudents = new ArrayList<>();
         expectedStudents.add(student1);
         expectedStudents.add(student2);
         assertEquals(expectedStudents, module.getStudents());

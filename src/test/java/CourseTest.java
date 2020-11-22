@@ -45,7 +45,7 @@ public class CourseTest {
         Student student2 = new Student("james", 21, new LocalDate(1993, 3, 12), 1234567);
         course.addStudent(student1);
         student2.addCourse(course);
-        ArrayList<Student> expectedStudents = new ArrayList<Student>();
+        ArrayList<Student> expectedStudents = new ArrayList<>();
         expectedStudents.add(student1);
         expectedStudents.add(student2);
         assertEquals(expectedStudents, course.getStudents());
@@ -62,7 +62,7 @@ public class CourseTest {
         Module module2 = new Module("Programming 1", "CT110");
         course.addModule(module1);
         module2.addCourse(course);
-        ArrayList<Module> expectedModules = new ArrayList<Module>();
+        ArrayList<Module> expectedModules = new ArrayList<>();
         expectedModules.add(module1);
         expectedModules.add(module2);
         assertEquals(expectedModules, course.getModules());
