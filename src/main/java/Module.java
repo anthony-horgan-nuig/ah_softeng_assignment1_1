@@ -10,12 +10,12 @@ public class Module {
     public Module(String name, String id){
         this.name = name;
         this.id = id;
-        this.courses = new ArrayList<Course>();
-        this.students = new ArrayList<Student>();
+        this.courses = new ArrayList<>();
+        this.students = new ArrayList<>();
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -23,7 +23,7 @@ public class Module {
     }
 
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(String id) {
@@ -31,40 +31,51 @@ public class Module {
     }
 
     public ArrayList<Course> getCourses() {
-        return this.courses;
+        return courses;
     }
 
     public ArrayList<Student> getStudents() {
-        return this.students;
+        return students;
     }
 
     public void addStudent(Student s){
-        if(this.students.contains(s)){
+        if(students.contains(s)){
             return;
         }
-        this.students.add(s);
+        students.add(s);
         if(! s.getModules().contains(this)){
             s.addModule(this);
         }
     }
 
     public void addCourse(Course c){
-        if(this.courses.contains(c)){
+        if(courses.contains(c)){
             return;
         }
-        this.courses.add(c);
+        courses.add(c);
         if(!c.getModules().contains(this)){
             c.addModule(this);
         }
     }
 
-    @Override
-    public String toString() {
+    public String shallowToString(){
         return "Module{" +
                 "name='" + name + '\'' +
                 ", id='" + id + '\'' +
-                ", students=" + students +
-                ", associatedCourses=" + courses +
                 '}';
+    }
+
+    @Override
+    public String toString() {
+        String retString = shallowToString();
+        retString += "\n\tStudents: ";
+        for(Student stud: students){
+            retString += "\n\t\t" + stud.shallowToString();
+        }
+        retString += "\n\tCourses: ";
+        for(Course course: courses){
+            retString += "\n\t\t" + course.shallowToString();
+        }
+        return retString;
     }
 }

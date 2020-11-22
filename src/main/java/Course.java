@@ -31,7 +31,7 @@ public class Course {
     }
 
     public LocalDate getStartDate() {
-        return this.startDate;
+        return startDate;
     }
 
     public void setStartDate(LocalDate startDate) {
@@ -39,7 +39,7 @@ public class Course {
     }
 
     public LocalDate getEndDate() {
-        return this.endDate;
+        return endDate;
     }
 
     public void setEndDate(LocalDate endDate) {
@@ -47,41 +47,52 @@ public class Course {
     }
 
     public ArrayList<Student> getStudents() {
-        return this.students;
+        return students;
     }
 
     public ArrayList<Module> getModules() {
-        return this.modules;
+        return modules;
     }
 
     public void addStudent(Student s){
-        if(this.students.contains(s)){
+        if(students.contains(s)){
             return;
         }
-        this.students.add(s);
+        students.add(s);
         if(! s.getCourses().contains(this)){
             s.addCourse(this);
         }
     }
 
     public void addModule(Module m){
-        if(this.modules.contains(m)){
+        if(modules.contains(m)){
             return;
         }
-        this.modules.add(m);
+        modules.add(m);
         if(! m.getCourses().contains(this)){
             m.addCourse(this);
         }
     }
 
-    @Override
-    public String toString() {
+    public String shallowToString(){
         return "Course{" +
                 "name='" + name + '\'' +
-                ", modules=" + modules +
-                ", students=" + students+
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';
+    }
+
+    @Override
+    public String toString() {
+        String retString = shallowToString();
+        retString += "\n\tModules: ";
+        for(Module mod : modules){
+            retString += "\n\t\t" + mod.shallowToString();
+        }
+        retString += "\n\tStudents: ";
+        for(Student stud: students){
+            retString += "\n\t\t" + stud.shallowToString();
+        }
+        return retString;
     }
 }

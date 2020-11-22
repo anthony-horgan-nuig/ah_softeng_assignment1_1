@@ -14,17 +14,17 @@ public class Student {
         this.age = age;
         this.dob = dob;
         this.id = id;
-        this.courses = new ArrayList<Course>();
-        this.modules = new ArrayList<Module>();
+        this.courses = new ArrayList<>();
+        this.modules = new ArrayList<>();
     }
 
     public String getUsername(){
-        return this.name + this.age;
+        return name + " " + age;
     }
 
     // basic getters and setters
     public int getAge() {
-        return this.age;
+        return age;
     }
 
     public void setAge(int age) {
@@ -32,7 +32,7 @@ public class Student {
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {
@@ -40,7 +40,7 @@ public class Student {
     }
 
     public LocalDate getDob() {
-        return this.dob;
+        return dob;
     }
 
     public void setDob(LocalDate dob) {
@@ -48,7 +48,7 @@ public class Student {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -56,44 +56,55 @@ public class Student {
     }
 
     public ArrayList<Course> getCourses() {
-        return this.courses;
+        return courses;
     }
 
     public ArrayList<Module> getModules() {
-        return this.modules;
+        return modules;
     }
 
     public void addCourse(Course c){
-        if(this.courses.contains(c)){
+        if(courses.contains(c)){
             return;
         }
-        this.courses.add(c);
+        courses.add(c);
         if(! c.getStudents().contains(this)){
             c.addStudent(this);
         }
     }
 
     public void addModule(Module m){
-        if(this.modules.contains(m)){
+        if(modules.contains(m)){
             return;
         }
-        this.modules.add(m);
+        modules.add(m);
         if(! m.getStudents().contains(this)){
             m.addStudent(this);
         }
     }
 
 
-    @Override
-    public String toString() {
+    public String shallowToString(){
         return "Student{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", dob=" + dob +
                 ", id=" + id +
-                ", username=" + this.getUsername() +
-                ", courses=" + courses +
-                ", modules=" + modules +
+                ", username=" + getUsername() +
                 '}';
+    }
+
+    @Override
+    public String toString() {
+        String retString = shallowToString();
+        retString += "\n\tCourses: ";
+        for(Course course: courses){
+            retString += "\n\t\t" + course.shallowToString();
+        }
+        retString += "\n\tModules: ";
+        for(Module mod : modules) {
+            retString += "\n\t\t" + mod.shallowToString();
+        }
+        return retString;
     }
 }
