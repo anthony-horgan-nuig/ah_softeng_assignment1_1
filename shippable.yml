@@ -1,0 +1,9 @@
+language: java
+jdk:-openjdk11
+after_success:
+  -mvnclean cobertura:cobertura
+  -mvntest
+notifications:
+  email:
+    recipients:
+      -a.horgan5@nuigalway.ie
