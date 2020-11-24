@@ -5,7 +5,9 @@ jdk:
 after_success:
   -mvnclean cobertura:cobertura
   -mvntest
-
+branches:
+  only:
+    - master
 build:
   on_success:
     - mvn clean test
